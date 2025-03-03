@@ -1,0 +1,88 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.busca input {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.busca button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+}
+
+.destaque, .categorias {
+    margin-bottom: 20px;
+}
+
+.produtos {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.produto {
+    text-align: center; /* Centraliza a imagem e a descrição */
+    margin: 20px; /* Adiciona espaço entre os produtos */
+    display: inline-block; /* Permite que os produtos fiquem lado a lado */
+}
+
+.produto img {
+    width: 200px; /* Defina a largura desejada para a imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    transition: transform 0.3s ease; /* Adiciona uma transição suave ao efeito de hover */
+}
+
+.produto img:hover {
+    transform: scale(1.1); /* Aumenta o tamanho da imagem em 10% no hover */
+    filter: brightness(1.1); /* Aumenta um pouco o brilho da imagem no hover */
+    cursor: pointer; /* Muda o cursor para um ponteiro no hover */
+}
+
+.descricao {
+    margin-top: 10px; /* Adiciona espaço entre a imagem e a descrição */
+    font-size: 14px; /* Define o tamanho da fonte da descrição */
+}

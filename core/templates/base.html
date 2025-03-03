@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome do Seu Site</title>
+    <link rel="stylesheet" href="{% static 'css/style.ccs' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Seu Logo</div>
+        <div class="busca">
+            <input type="text" placeholder="Buscar produtos...">
+            <button>Buscar</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Vender</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="destaque">
+            <h2>Produtos em Destaque</h2>
+            <div class="produtos">
+                </div>
+        </section>
+        <section class="categorias">
+            <h2>Categorias</h2>
+            <ul>
+                <li><a href="#">Eletrônicos</a></li>
+                <li><a href="#">Roupas</a></li>
+                <li><a href="#">Móveis</a></li>
+                </ul>
+        </section>
+        <div class="produto">
+            <img src="produto1.jpg" alt="Produto 1">
+            <p class="descricao">Descrição do Produto 1</p>
+        </div>
+        <div class="produto">
+            <img src="produto2.jpg" alt="Produto 2">
+            <p class="descricao">Descrição do Produto 2</p>
+        </div>
+        <div class="produto">
+            <img src="produto3.jpg" alt="Produto 3">
+            <p class="descricao">Descrição do Produto 3</p>
+        </div>
+    </main>
+    <footer>
+        <p>Informações de contato e links úteis.</p>
+    </footer>
+</body>
+</html>
