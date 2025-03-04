@@ -5,5 +5,5 @@ from app_main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', views.bazarView, name='bazar'),
+    path('inicio/', views.InitiView.as_view(), name='bazar'),
 ]

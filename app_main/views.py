@@ -1,5 +1,6 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def bazarView(request):
-    return render(request, '')
+class InitiView(TemplateView):
+    template_name = 'initi.html'

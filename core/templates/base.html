@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nome do Seu Site</title>
-    <link rel="stylesheet" href="{% static 'css/style.ccs' %}">
+    <title>Bazar da Ana</title>
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
 </head>
 <body>
     <header>
@@ -24,31 +24,9 @@
         </nav>
     </header>
     <main>
-        <section class="destaque">
-            <h2>Produtos em Destaque</h2>
-            <div class="produtos">
-                </div>
-        </section>
-        <section class="categorias">
-            <h2>Categorias</h2>
-            <ul>
-                <li><a href="#">Eletrônicos</a></li>
-                <li><a href="#">Roupas</a></li>
-                <li><a href="#">Móveis</a></li>
-                </ul>
-        </section>
-        <div class="produto">
-            <img src="produto1.jpg" alt="Produto 1">
-            <p class="descricao">Descrição do Produto 1</p>
-        </div>
-        <div class="produto">
-            <img src="produto2.jpg" alt="Produto 2">
-            <p class="descricao">Descrição do Produto 2</p>
-        </div>
-        <div class="produto">
-            <img src="produto3.jpg" alt="Produto 3">
-            <p class="descricao">Descrição do Produto 3</p>
-        </div>
+        
+        {% block content %}
+        {% endblock %}
     </main>
     <footer>
         <p>Informações de contato e links úteis.</p>
