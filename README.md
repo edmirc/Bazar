@@ -1,0 +1,1 @@
+Projeto para treinamento, mas com intuito de facilitar a venda de oprodutos usados, interagindo o o vendedor com o camprador.

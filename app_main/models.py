@@ -1,18 +1,24 @@
 from django.db import models
 
 
-class CategoriesModel(models.Model):
+class Categories(models.Model):
     name = models.CharField(max_length=100, verbose_name='Tipo', unique=True)
 
     class Meta:
-        odering=['name']
+        ordering=['name']
         verbose_name='Categorias'
+        verbose_name_plural='Categorias'
+
+    def save(self, *args, **kargs):
+        self.name = self.name.strip().title()
+        super().save(*args, **kargs)
+
 
     def __str__(self):
         return self.name
 
 
-class SellerModel(models.Model):
+class Seller(models.Model):
     name=models.CharField(max_length=200, unique=True, verbose_name='Nome')
     fone = models.CharField(max_length=20, unique=True, verbose_name='Telefone')
     street = models.CharField(max_length=200, verbose_name='Rua', null=True, blank=True)
@@ -22,26 +28,54 @@ class SellerModel(models.Model):
     cep = models.CharField(max_length=8, verbose_name='CEP')
 
     class Meta:
-        odering=['name']
+        ordering=['name']
         verbose_name='Vendedor'
+        verbose_name_plural='vendedor'
     
     def __str__(self):
         return self.name
 
     def save(self, *args, **kargs):
-        self.name = self.name.title()
+        self.name = self.name.title().strip()
         super().save(*args, **kargs)
 
 
-class ProductModel(models.Model):
+class Product(models.Model):
+    status_choice = (('nove', 'Novo'), ('usado', 'Usado'), ('semi-novo', 'Semi-novo'), ('quebrado', 'Quebrado'))
     name = models.CharField(max_length=200, verbose_name='Nome')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Preço')
-    categorie = models.ForeignKey(CategoriesModel, on_delete=models.CASCADE, verbose_name='Categoria')
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, verbose_name='Vendedor')
+    categorie = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Categoria')
+    size = models.CharField(max_length=20, verbose_name='Tamanho', null=True, blank=True)
+    brand = models.CharField(max_length=100, verbose_name="Marca", null=True, blank=True)
+    condition=models.CharField(max_length=20, choices=status_choice, verbose_name='Condição')
     sold = models.BooleanField(default=False, verbose_name='Vendido')
     description = models.TextField(max_length=200, verbose_name='Descrição')
 
-class PhotoModel(models.Model):
-    product = models.ForeignKey(ProductModel, )
+    class Meta:
+        ordering=['name']
+        verbose_name='Produto'
+
+    def __str__(self):
+        return self.name
+    
+    def save(self, *args, **kargs):
+        self.name = self.name.strip().title()
+        self.brand = self.brand.strip().title()
+        self.size = self.size.strip().title()
+        super().save(*args, **kargs)
+
+
+class Photo(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Produto', related_name='foto')
     cover = models.BooleanField(default=False, verbose_name='Capa')
     photo = models.ImageField(upload_to='products/', verbose_name='Foto')
 
+    class Meta:
+        ordering=['product']
+        verbose_name='Imagem'
+        verbose_name_plural = 'Imagens'
+
+    def __str__(self):
+        return self.product.name
+    

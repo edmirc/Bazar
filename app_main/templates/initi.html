@@ -14,16 +14,16 @@
         <li><a href="#">Móveis</a></li>
         </ul>
 </section>
-<div class="produto">
-    <img src="produto1.jpg" alt="Produto 1">
-    <p class="descricao">Descrição do Produto 1</p>
-</div>
-<div class="produto">
-    <img src="produto2.jpg" alt="Produto 2">
-    <p class="descricao">Descrição do Produto 2</p>
-</div>
-<div class="produto">
-    <img src="produto3.jpg" alt="Produto 3">
-    <p class="descricao">Descrição do Produto 3</p>
+{% for pro in product %}
+    <div class="produto">
+        {% for k in image %}
+                {% if k.product_id == pro.pk %}
+                    <img src="{{ k.photo.url }}" alt="{{ pro.name }} - {{pro.price}}">
+                {% endif %}
+        {% endfor %}
+        <p class="descricao">{{ pro.name }}</p>
+        <p class="descricao">R$ {{ pro.price }}</p>
+    </div>
+{% endfor %}
 </div>
 {% endblock %}
