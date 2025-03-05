@@ -69,6 +69,7 @@ class Product(models.Model):
 class Photo(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Produto', related_name='foto')
     cover = models.BooleanField(default=False, verbose_name='Capa')
+    sold = models.BooleanField(default=False, verbose_name='Vendido')
     photo = models.ImageField(upload_to='products/', verbose_name='Foto')
 
     class Meta:

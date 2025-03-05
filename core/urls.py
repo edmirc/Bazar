@@ -7,5 +7,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', views.InitiView.as_view(), name='bazar'),
+    path('', views.InitiView.as_view(), name='bazar'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
