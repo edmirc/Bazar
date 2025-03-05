@@ -11,12 +11,14 @@
     <header>
         <div class="logo">Seu Logo</div>
         <div class="busca">
-            <input type="text" placeholder="Buscar produtos...">
-            <button>Buscar</button>
+            <form method="get" action="{% url 'bazar' %}">
+                <input type="text" placeholder="Buscar produtos..." name="busca">
+                <button>Buscar</button>
+            </form>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Início</a></li>
+                <li><a href="{% url 'bazar' %}">Início</a></li>
                 <li><a href="#">Categorias</a></li>
                 <li><a href="#">Vender</a></li>
                 <li><a href="#">Contato</a></li>

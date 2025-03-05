@@ -96,4 +96,8 @@ footer {
     margin-top: 10px; /* Adiciona espaço entre a imagem e a descrição */
     font-size: 14px; /* Define o tamanho da fonte da descrição */
 }
--->
+a {
+    text-decoration: none;
+    color: #333;
+    font-size: medium;
+}

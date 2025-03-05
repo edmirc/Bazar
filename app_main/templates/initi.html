@@ -22,8 +22,10 @@
                     <img src="{{ k.photo.url }}" alt="{{ pro.name }} - {{pro.price}}">
                 {% endif %}
         {% endfor %}
-        <p class="descricao">{{ pro.name }}</p>
-        <p class="descricao">R$ {{ pro.price }}</p>
+        <a href="{% url 'detail' pro.pk %}">
+            <p class="descricao">{{ pro.name }}</p>
+            <p class="descricao">R$ {{ pro.price }}</p>
+        </a>
     </div>
 {% endfor %}
 </div>
