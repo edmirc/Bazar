@@ -1,38 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/details_style.css' %}">
-<body class="details">
-    <div class="product-container">
-        <!-- Imagem principal -->
-         {% for photo in product.foto.all %}
-            
-                {% if photo.cover %}
-                    <img id="main-image" src="{{ photo.photo.url }}" alt="{{ product.name }}" class="main-image">
-                {% endif %}
+<link rel="stylesheet" href="{% static 'css/styles_details.css' %}">
+<div class="product-container">
+    <h1 class="product-name">{{ product.name }}</h1>
+    <div class="product-category">Categoria: {{ product.categorie }}</div>
+    <div class="product-category">Condição: {{ product.condition }}</div>
+    <div class="product-category">Tamanho: {{ product.size}}</div>
+    <div class="product-category">Marca: {{ product.brand}}</div>
+    <div class="product-price">Valor: R${{ product.price }}</div>
+    <div class="product-description">{{ product.description }}</div>
+
+    <div class="image-gallery">
+        {% for ph in product.foto.all %}
+            {% if ph.cover %}
+                <img id="main-image" src="{{ ph.photo.url }}" alt="{{ product.name }}" class="main-image" onclick="enlargeImage(this)">
+            {% endif %}
         {% endfor %}
-        <!-- Miniaturas das imagens -->
         <div class="thumbnail-container">
             {% for photo in product.foto.all %}
-                    <img src="{{ photo.photo.url }}" alt="{{ product.name }}" class="thumbnail" onclick="changeImage('{{ photo.photo.url }}')">
-            {% endfor %}  
+                <img src="{{ photo.photo.url }}" alt="{{ product.name }}" class="thumbnail" onclick="changeImage('{{ photo.url }}')">
+            {% endfor %}
         </div>
-
-        <!-- Detalhes do produto -->
-        <div class="product-name">{{ product.name }}</div>
-        <div class="product-category">Categoria: {{ product.Categorie }}</div>
-        <div class="product-price">R$ {{ product.price }}</div>
-        <div class="product-description">
-            {{ product.description }}
-        </div>
+    </div>
 </div>
-</body>
 
-<script>
-    // Função para trocar a imagem principal ao clicar nas miniaturas
-    function changeImage(src) {
-        document.getElementById('main-image').src = src;
-    }
-</script>
+<script src="{% static 'js/script_detais.js' %}"></script>
 
 {% endblock %}

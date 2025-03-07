@@ -32,5 +32,3 @@ class ProductDetailView(DetailView):
     queryset = Product.objects.prefetch_related(Prefetch('foto', queryset=Photo.objects.all()))
     
    
-
-    
