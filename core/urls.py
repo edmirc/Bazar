@@ -10,4 +10,5 @@ urlpatterns = [
     path('', views.InitiView.as_view(), name='bazar'),
     path('detail/<int:pk>/', views.ProductDetailView.as_view(), name='detail'),
     path('category/<int:pk>', views.CategoryView.as_view(), name='category'),
+    path("contatc/", views.ContactViews.as_view(), name='contact'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

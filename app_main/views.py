@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from .models import Product, Photo, Categories
 from django.db.models import Prefetch
 
@@ -50,3 +50,8 @@ class CategoryView(ListView):
         context = super().get_context_data(**kwargs)
         context['category'] = Categories.objects.all()
         return context
+    
+
+class ContactViews(TemplateView):
+    template_name = 'contact.html'
+    

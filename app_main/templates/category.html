@@ -4,31 +4,35 @@
 
 <link rel="stylesheet" href="{% static 'css/styles_category.css' %}">
 <body>
-<div class="category-container">
-    <h1 class="category-title">Categorias</h1>
-    <ul class="category-list">
-        {% for categor in category %}
-            <li class="category-item">
-                <a href="{% url 'category' categor.id %}">{{ categor.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+<div class="container">
+    <div class="category-container">
+        <h1 class="category-title">Categorias</h1>
+        <ul class="category-list">
+            {% for categor in category %}
+                <li class="category-item">
+                    <a href="{% url 'category' categor.id %}">{{ categor.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-<div class="products-container">
-    <h2 class="products-title">Produtos Relacionados</h2>
-    <div class="products-list">
-        {% for product in products %}
-            <div class="product-item">
-                <h3 class="product-name">{{ product.name }}</h3>
-                <div class="product-price">Valor: R${{ product.price }}</div>
-                {% for img in product.foto.all %}
-                    {% if img.cover %}
-                        <img src="{{ img.photo.url }}" alt="{{ product.name }}" class="product-image">
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% endfor %}
+    <div class="products-container">
+        <h2 class="products-title">Produtos Relacionados</h2>
+        <div class="products-list">
+            {% for product in products %}
+                <div class="product-item">
+                    <a href="{% url 'detail' product.pk %}">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                        <div class="product-price">Valor: R${{ product.price }}</div>
+                        {% for img in product.foto.all %}
+                            {% if img.cover %}
+                                <img src="{{ img.photo.url }}" alt="{{ product.name }}" class="product-image">
+                            {% endif %}
+                        {% endfor %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 </body>

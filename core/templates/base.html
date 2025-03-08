@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bazar da Ana</title>
     <link rel="stylesheet" href="{% static 'css\styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
     <header>
@@ -21,7 +22,7 @@
                 <li><a href="{% url 'bazar' %}">Início</a></li>
                 <li><a href="{% url 'category' 0 %}">Categorias</a></li>
                 <li><a href="#">Vender</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="{% url 'contact' %}">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +32,9 @@
         {% endblock %}
     </main>
     <footer>
-        <p>&copy; Bazar da Ana, todos os direitos reservados.</p>
+        <div class="footer">
+            <p>&copy; Bazar da Ana, todos os direitos reservados.</p>
+        </div>
     </footer>
 
 </html>
