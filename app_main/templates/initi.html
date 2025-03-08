@@ -15,6 +15,9 @@
         </ul>
     </section>
 -->
+<body>
+    
+
 {% for pro in product %}
     <div class="produto">
         {% for k in image %}
@@ -22,7 +25,7 @@
                     <img src="{{ k.photo.url }}" alt="{{ pro.name }} - {{pro.price}}">
                 {% endif %}
         {% endfor %}
-        <a href="{% url 'detail' pro.pk %}">
+        <a class="produtoa" href="{% url 'detail' pro.pk %}">
             <p class="descricao">{{ pro.name }}</p>
             <p class="descricao">R$ {{ pro.price }}</p>
         </a>
@@ -30,3 +33,4 @@
 {% endfor %}
 </div>
 {% endblock %}
+</body>

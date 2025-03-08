@@ -27,3 +27,8 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     list_filter=['product']
+    list_display=['product', 'cover', 'sold', 'photo']
+
+
+admin.site.site_header = 'Painel de Administração do Bazar da Ana'
+admin.site.site_title = 'Bazar da Ana'

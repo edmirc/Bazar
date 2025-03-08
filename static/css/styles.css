@@ -99,5 +99,18 @@ footer {
 a {
     text-decoration: none;
     color: #333;
-    font-size: medium;
+    font-size: 15px;
+    color:#845c8b;
+    font-weight: bold;
+}
+a:hover{
+    color:#007bff
+}
+.produtoa{
+    font-size: 20px;
+    color:#845c8b;
+    font-weight: bold;
+}
+.produtoa:hover{
+    color:#007bff
 }

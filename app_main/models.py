@@ -63,6 +63,10 @@ class Product(models.Model):
         self.name = self.name.strip().title()
         self.brand = self.brand.strip().title()
         self.size = self.size.strip().title()
+        if self.sold:
+            for photo in Photo.objects.filter(product=self):
+                photo.sold = True
+                photo.save()
         super().save(*args, **kargs)
 
 
@@ -77,6 +81,19 @@ class Photo(models.Model):
         verbose_name='Imagem'
         verbose_name_plural = 'Imagens'
 
+    def save(self, *args, **kargs):
+        if self.cover:
+            try:
+                temp = Photo.objects.get(product=self.product, cover=True)
+                if self != temp:
+                    temp.cover = False
+                    temp.save()
+            except:
+                pass
+        return super().save(*args, **kargs)
+
     def __str__(self):
         return self.product.name
+    
+
     

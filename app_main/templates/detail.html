@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/styles_details.css' %}">
-<div class="product-container">
-    <h1 class="product-name">{{ product.name }}</h1>
-    <div class="product-category">Categoria: {{ product.categorie }}</div>
-    <div class="product-category">Condição: {{ product.condition }}</div>
-    <div class="product-category">Tamanho: {{ product.size}}</div>
-    <div class="product-category">Marca: {{ product.brand}}</div>
-    <div class="product-price">Valor: R${{ product.price }}</div>
-    <div class="product-description">{{ product.description }}</div>
 
+<link rel="stylesheet" href="{% static 'css/styles_details.css' %}">
+<body>
+<div class="product-container">
+    <div>
+        <h1 class="product-name">{{ product.name }}</h1>
+        <div class="product-category">Categoria: {{ product.categorie }}</div>
+        <div class="product-category">Condição: {{ product.condition }}</div>
+        <div class="product-category">Tamanho: {{ product.size}}</div>
+        <div class="product-category">Marca: {{ product.brand}}</div>
+        <div class="product-price">Valor: R${{ product.price }}</div>
+        <div class="product-description">{{ product.description }}</div>
+    </div>
     <div class="image-gallery">
         {% for ph in product.foto.all %}
             {% if ph.cover %}
@@ -24,7 +27,7 @@
         </div>
     </div>
 </div>
-
+</body>
 <script src="{% static 'js/script_detais.js' %}"></script>
 
 {% endblock %}

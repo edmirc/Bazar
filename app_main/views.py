@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Product, Photo
+from .models import Product, Photo, Categories
 from django.db.models import Prefetch
 
 
@@ -29,6 +29,24 @@ class ProductDetailView(DetailView):
     template_name = 'detail.html'
     model = Product
     context_object_name = 'product'
+    queryset = Product.objects.prefetch_related(Prefetch('foto', queryset=Photo.objects.all())).filter(sold=False)
+
+
+class CategoryView(ListView):
+    template_name = 'category.html'
+    model = Product
+    context_object_name = 'products'
     queryset = Product.objects.prefetch_related(Prefetch('foto', queryset=Photo.objects.all()))
-    
-   
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        res = self.request.get_full_path_info()
+        res = res.split('/')[2]
+        queryset = queryset.filter(categorie=res, sold=False)
+        return queryset
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category'] = Categories.objects.all()
+        return context
