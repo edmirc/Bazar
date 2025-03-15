@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, TemplateView
-from .models import Product, Photo, Categories
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
+from .models import Product, Photo, Categories, Contact
 from django.db.models import Prefetch
+from .forms import ContactForm
+
 
 
 class InitiView(ListView):
@@ -50,8 +52,13 @@ class CategoryView(ListView):
         context = super().get_context_data(**kwargs)
         context['category'] = Categories.objects.all()
         return context
-    
 
-class ContactViews(TemplateView):
+
+class ContactViews(CreateView):
     template_name = 'contact.html'
-    
+    model = Contact
+    form_class = ContactForm
+    success_url = '/contatc/'
+
+
+   
