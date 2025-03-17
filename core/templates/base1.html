@@ -11,15 +11,13 @@
     <!-- Cabeçalho -->
 <header>
     <h1>Armário Secreto</h1>
-    
+      <!-- Navegação -->
 </header>
-    <!-- Navegação -->
-    <nav>
+      <nav>
         <a href="{% url 'bazar' %}">Início</a>
         <a href="{% url 'category' 1 %}">Categoria</a>
         <a href="{% url 'contact' %}">Contato</a>
     </nav>
-<body>
     <!-- Campo de Busca -->
     <div class="search-container">
         <form action="{% url 'bazar'%}" method="get">
@@ -27,10 +25,14 @@
             <button onclick="searchProduct()">Buscar</button>
         </form>
     </div>
+    
+
+    
+    
 
     {% block content %}
     {% endblock %}    
-</body>
+
 <!-- Rodapé -->
 <footer>
     <p>&copy; 2023 Armário Secreto. Todos os direitos reservados.</p>

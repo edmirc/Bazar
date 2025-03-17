@@ -4,9 +4,9 @@
     margin: 0;
     padding: 0;
     margin-bottom: 20px;
-    /*display: flex;
+    display: flex;
     flex-direction: column;
-    min-height: 100vh;*/
+    min-height: 100vh;
 }
 
 header {
@@ -39,7 +39,8 @@ nav a:hover {
 
 .search-container {
     text-align: center;
-    margin: 20px 0;
+    margin: 0;
+    background-color: #ccc;
 }
 
 .search-container input[type="text"] {
