@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base1.html" %}
 {% load static %}
 {% block content %}
 
@@ -6,15 +6,18 @@
 <body>
 <div class="contact-container">
     <h1 class="contact-title">Contato</h1>
-    <form class="contact-form" id="contactForm">
+    <form class="contact-form" id="contactForm" method="post" action="{% url 'contact' %}">{% csrf_token %}
         <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required>
+        {{ form.name }}
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        {{ form.email }}
+        
+        <label for="phone">Telefone:</label>
+        {{ form.phone }}
 
         <label for="message">Mensagem:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+        {{ form.message }}
 
         <button type="submit">Enviar</button>
     </form>
@@ -34,11 +37,4 @@
     </div>
 </div>
 </body>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Formulário enviado com sucesso!');
-        // Aqui você pode adicionar a lógica para enviar o formulário via AJAX ou outra forma de processamento
-    });
-</script>
 {% endblock %}

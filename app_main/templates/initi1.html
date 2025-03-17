@@ -1,0 +1,25 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'css\style_initi1.css' %}">
+    <p>Bem-vindo ao Armário Secreto! Aqui você encontra os melhores produtos.</p>
+<!-- Container para os produtos -->
+<div class="products-container">
+    <!-- Produtos -->
+     {% for pro in product %}
+        <a href="{% url 'detail' pro.pk %}">
+            <div class="product-card">
+                {% for k in image %}
+                    {% if k.product_id == pro.pk %}
+                        <img src="{{ k.photo.url }}" alt="{{ pro.name }} - {{pro.price}}">
+                    {% endif %}
+                {% endfor %}
+                <h3>{{ pro.name }}</h3>
+                <p>R$ {{ pro.price }}</p>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

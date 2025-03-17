@@ -11,12 +11,6 @@
 
     <header>
         <div class="logo">Bazar da Ana</div>
-        <div class="busca">
-            <form method="get" action="{% url 'bazar' %}">
-                <input type="text" placeholder="Buscar produtos..." name="busca">
-                <button>Buscar</button>
-            </form>
-        </div>
         <nav>
             <ul>
                 <li><a href="{% url 'bazar' %}">Início</a></li>
@@ -27,6 +21,12 @@
         </nav>
     </header>
     <main>
+        <div class="busca">
+            <form method="get" action="{% url 'bazar' %}">
+                <input type="text" placeholder="Buscar produtos..." name="busca">
+                <button>Buscar</button>
+            </form>
+        </div>
         
         {% block content %}
         {% endblock %}

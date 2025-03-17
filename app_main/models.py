@@ -96,4 +96,21 @@ class Photo(models.Model):
         return self.product.name
     
 
-    
+class Contact(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Nome')
+    email = models.EmailField(verbose_name='Email', null=True, blank=True)
+    phone = models.CharField(max_length=20, verbose_name='Telefone')
+    message = models.TextField(max_length=200, verbose_name='Mensagem')
+    seen = models.BooleanField(default=False, verbose_name='Visto')
+
+    class Meta:
+        ordering=['name']
+        verbose_name='Contato'
+        verbose_name_plural='Contatos'
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kargs):
+        self.name = self.name.strip().title()
+        super().save(*args, **kargs)

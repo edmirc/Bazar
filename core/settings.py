@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-g!9d_0z9fyy2w(oa#i9=!bg)6gl3m3&qy+91mz-hyk+95k&yy3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['82.25.71.225', 'armariosecreto.com.br', 'www.armariosecreto.com.br', '127.0.0.1']
 
 
 # Application definition
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bazar',
+        'USER': 'root',
+        'PASSWORD': '@Mysql025978',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

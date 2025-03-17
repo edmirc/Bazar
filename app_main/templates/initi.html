@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block title %}Bazar da Ana{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css\styles_init.css' %}">
 <section class="destaque">
     <h2>Produtos em Destaque</h2>
     <div class="produtos">

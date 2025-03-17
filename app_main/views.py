@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, TemplateView
-from .models import Product, Photo, Categories
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
+from .models import Product, Photo, Categories, Contact
 from django.db.models import Prefetch
+from .forms import ContactForm
 
 
 class InitiView(ListView):
-    template_name = 'initi.html'
+    template_name = 'initi1.html'
     model=Product
     context_object_name='product'
 
@@ -20,7 +21,6 @@ class InitiView(ListView):
         search = self.request.GET.get('busca')
         if search:
             queryset = queryset.filter(name__icontains=search, sold=False)
-            print(queryset)
             return queryset
         return queryset
     
@@ -52,6 +52,9 @@ class CategoryView(ListView):
         return context
     
 
-class ContactViews(TemplateView):
+class ContactViews(CreateView):
     template_name = 'contact.html'
+    model = Contact
+    form_class = ContactForm
+    success_url = '/'
     

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armário Secreto</title>
+</head>
+<link rel="stylesheet" href="{% static 'css\styles_base1.css' %}">
+
+    <!-- Cabeçalho -->
+<header>
+    <h1>Armário Secreto</h1>
+    
+</header>
+    <!-- Navegação -->
+    <nav>
+        <a href="{% url 'bazar' %}">Início</a>
+        <a href="{% url 'category' 1 %}">Categoria</a>
+        <a href="{% url 'contact' %}">Contato</a>
+    </nav>
+<body>
+    <!-- Campo de Busca -->
+    <div class="search-container">
+        <form action="{% url 'bazar'%}" method="get">
+            <input type="text" id="searchInput" placeholder="Digite o nome do produto..." name="busca">
+            <button onclick="searchProduct()">Buscar</button>
+        </form>
+    </div>
+
+    {% block content %}
+    {% endblock %}    
+</body>
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2023 Armário Secreto. Todos os direitos reservados.</p>
+</footer>
+</html>
