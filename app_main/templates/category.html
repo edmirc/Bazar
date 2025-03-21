@@ -1,41 +1,34 @@
-{% extends "base1.html" %}
+{% extends 'base1.html' %}
 {% load static %}
-{% block content %}
+{% block content %} 
 
-<link rel="stylesheet" href="{% static 'css/styles_category.css' %}">
-<body>
-<div class="container">
-    <div class="category-container">
-        <h1 class="category-title">Categorias</h1>
-        <ul class="category-list">
-            {% for categor in category %}
-                <li class="category-item">
-                    <a href="{% url 'category' categor.id %}">{{ categor.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <div class="products-container">
-        <h2 class="products-title">Produtos Relacionados</h2>
-        <div class="products-list">
-            {% for product in products %}
-                <div class="product-item">
-                    <a href="{% url 'detail' product.pk %}">
-                        <h3 class="product-name">{{ product.name }}</h3>
-                        <div class="product-price">Valor: R${{ product.price }}</div>
-                        {% for img in product.foto.all %}
-                            {% if img.cover %}
-                                <img src="{{ img.photo.url }}" alt="{{ product.name }}" class="product-image">
-                            {% endif %}
-                        {% endfor %}
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+<link rel="stylesheet" href="{% static 'css\style_category.css' %}">
+<div class="div-category">
+    <p class="title">Categorias</p>
+    <ul>
+        {% for cat in category %}
+            <li>
+                <a href="{% url 'category' cat.pk %}">{{ cat.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
-</body>
+<div class="products-container">
+    <!-- Produtos -->
+    {% for pro in products %}
+        <a href="{% url 'detail' pro.pk %}">
+            <div class="product-card">
+                {% for img in pro.foto.all  %}
+                    {% if img.cover %}
+                        <img src="{{ img.photo.url }}" alt="{{ pro.name }} - {{pro.price}}">
+                    {% endif %}
+                {% endfor %}
+                <h3>{{ pro.name }}</h3>
+                <p>R$ {{ pro.price }}</p>
+            </div>
+        </a>
+    {% endfor %}
+</div>
 
 
 {% endblock %}
