@@ -25,6 +25,9 @@
                 <img src="{{ photo.photo.url }}" alt="{{ product.name }}" class="thumbnail" onclick="changeImage('{{ photo.url }}')">
             {% endfor %}
         </div>
+        <form action="{% url 'contact' %}" method="post" class="form-compra">{% csrf_token %}
+            <input type="submit" name="comprar" id="comprar" value="Comprar">
+        </form>
     </div>
 </div>
 </body>
