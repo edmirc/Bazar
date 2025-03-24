@@ -3,16 +3,15 @@
 {% block content %} 
 
 <link rel="stylesheet" href="{% static 'css\style_category.css' %}">
-<div class="div-category">
-    <p class="title">Categorias</p>
-    <ul>
+<div class="container-cat">
+    <p>Categorias:</p>
+    <div class="elements">
         {% for cat in category %}
-            <li>
-                <a href="{% url 'category' cat.pk %}">{{ cat.name }}</a>
-            </li>
+                <a class="cat" href="{% url 'category' cat.pk %}">{{ cat.name }}</a>
         {% endfor %}
-    </ul>
+    </div>
 </div>
+
 <div class="products-container">
     <!-- Produtos -->
     {% for pro in products %}

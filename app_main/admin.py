@@ -26,13 +26,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_filter=['product']
+    list_filter=['product', 'sold', 'cover']
     list_display=['product', 'cover', 'sold', 'photo']
 
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_filter=['name']
+    list_filter=['name',  'seen']
     list_display=['name', 'email', 'phone', 'message', 'seen']
 
 

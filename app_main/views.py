@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView
 from .models import Product, Photo, Categories, Contact
 from django.db.models import Prefetch
 from .forms import ContactForm
+from django.core.mail import send_mail
 
 
 class InitiView(ListView):
@@ -57,4 +58,3 @@ class ContactViews(CreateView):
     model = Contact
     form_class = ContactForm
     success_url = '/'
-    

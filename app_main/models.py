@@ -41,7 +41,7 @@ class Seller(models.Model):
 
 
 class Product(models.Model):
-    status_choice = (('nove', 'Novo'), ('usado', 'Usado'), ('semi-novo', 'Semi-novo'), ('quebrado', 'Quebrado'))
+    status_choice = (('Novo', 'Novo'), ('Usado', 'Usado'), ('Semi-novo', 'Semi-novo'), ('Quebrado', 'Quebrado'))
     name = models.CharField(max_length=200, verbose_name='Nome')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Preço')
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE, verbose_name='Vendedor')
@@ -50,7 +50,7 @@ class Product(models.Model):
     brand = models.CharField(max_length=100, verbose_name="Marca", null=True, blank=True)
     condition=models.CharField(max_length=20, choices=status_choice, verbose_name='Condição')
     sold = models.BooleanField(default=False, verbose_name='Vendido')
-    description = models.TextField(max_length=200, verbose_name='Descrição')
+    description = models.TextField(max_length=800, verbose_name='Descrição')
 
     class Meta:
         ordering=['name']
