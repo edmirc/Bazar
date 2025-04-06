@@ -108,7 +108,7 @@ class Photo(models.Model):
         with Image.open(caminho) as img:
             # Calcula as novas dimensões mantendo a proporção
             largura, altura = img.size
-            if largura >= 800 and altura >= 1000:
+            if largura > 800 and altura > 1000:
                 # Redimensiona a imagem se ela for maior que 800x1000
                 proporcao = min(800/largura, 1000/altura)
                 proporcao = min(800/largura, 1000/altura)
