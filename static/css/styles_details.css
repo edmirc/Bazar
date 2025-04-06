@@ -1,3 +1,117 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #e9e8e7;
+    
+}
+.details-body{
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: antiquewhite;
+}
+.detail-container{
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px; 
+}
+.product-details{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.product-gallery{
+    flex: 1;
+
+}
+.product-gallery img{
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+.product-gallery-img{
+    max-width: 500px;
+    max-height: 1500px;
+    min-width: 300px;
+    box-shadow: 0px 3px 10px #575656
+}
+.gallery-thumbnails{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+.gallery-thumbnails img{
+    width: 60px;
+    height: 60px;
+    border: 2px solid transparent;  
+    transition: 0.3s; 
+    
+}
+.gallery-thumbnails img:hover{
+    border: 2px solid black;  
+}
+/*informações do produto*/
+.product-info{
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+}
+.condition-product{
+    justify-items: left;
+    text-align: left;
+    border-bottom: 1px solid #d6d1d1;
+}
+.product-info h2{
+    font-size: 30px;
+    padding-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+.condition{
+    padding-bottom: 5px;
+    color: #999797;
+    font-weight: 500;
+}
+.price{
+    padding-bottom: 20px;
+    color:#757779;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Oswald', sans-serif ;
+    border-bottom: 1px solid #d6d1d1;
+}
+#title-descripiton{
+    text-align: left;
+}
+.product-description{
+    justify-content: center;
+    text-align: left;   
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+#button-by{
+    border: 1px solid black;
+    padding: 10px 40px;
+    text-decoration: none;
+    background-color: #585a54;
+    border-radius: 10px;
+    color:#fff;
+    font-family:'Oswald', sans-serif;
+    transition: 0.3s;
+}
+#button-by:hover{
+    background-color: #b66767;
+    border-color:transparent;
+}
+
+
+
+
+
+
+/*
 body {
     font-family: sans-serif;
     margin: 0;
@@ -68,9 +182,9 @@ body {
 }
 .form-compra {
     display: flex;
-    justify-content: center; /* Centraliza o botão horizontalmente */
-    align-items: center; /* Centraliza o botão verticalmente */
-    padding: 10px; /* Adiciona padding para garantir */
+    justify-content: center; 
+    align-items: center;
+    padding: 10px; 
 }
 #comprar {
     background-color: #0ab104;
@@ -97,4 +211,4 @@ body {
     .main-image {
         max-height: 400px;
     }
-}
+}*/

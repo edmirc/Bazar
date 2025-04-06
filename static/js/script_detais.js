@@ -1,7 +1,6 @@
-// filepath: /product-display/product-display/js/script.js
 document.addEventListener('DOMContentLoaded', function() {
-    const mainImage = document.getElementById('main-image');
-    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainImage = document.querySelector('.product-gallery-img');
+    const thumbnails = document.querySelectorAll('.thumbnails');
 
     thumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', function() {
@@ -18,3 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function menuShow(){
+    let divMobile = document.querySelector('.div-mobile');
+    if (divMobile.classList.contains('open')){
+        divMobile.classList.remove('open');
+    }else{
+        divMobile.classList.add('open');
+        
+    }
+}
+
+function showSearch(){
+    let divSearch = document.querySelector('.mobile-search');
+    if (divSearch.classList.contains('open')){
+        divSearch.classList.remove('open');
+    }else{
+        divSearch.classList.add('open');
+    }
+}

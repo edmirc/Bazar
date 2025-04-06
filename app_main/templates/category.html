@@ -1,33 +1,31 @@
-{% extends 'base1.html' %}
 {% load static %}
-{% block content %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias</title>
+    <link rel="stylesheet" href="{% static 'css/style_category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_base1.css' %}">
+</head>
+<body>
+    
+    {% include 'header.html' %}
 
-<link rel="stylesheet" href="{% static 'css\style_category.css' %}">
-<div class="container-cat">
-    <p>Categorias:</p>
-    <div class="elements">
-        {% for cat in category %}
-                <a class="cat" href="{% url 'category' cat.pk %}">{{ cat.name }}</a>
-        {% endfor %}
+    <div class="container-cat">
+        <p>Categorias:</p>
+        <div class="elements">
+            {% for cat in category %}
+                    <a class="cat" href="{% url 'category' cat.pk %}">{{ cat.name }}</a>
+            {% endfor %}
+        </div>
     </div>
-</div>
 
-<div class="products-container">
-    <!-- Produtos -->
-    {% for pro in products %}
-        <a href="{% url 'detail' pro.pk %}">
-            <div class="product-card">
-                {% for img in pro.foto.all  %}
-                    {% if img.cover %}
-                        <img src="{{ img.photo.url }}" alt="{{ pro.name }} - {{pro.price}}">
-                    {% endif %}
-                {% endfor %}
-                <h3>{{ pro.name }}</h3>
-                <p>R$ {{ pro.price }}</p>
-            </div>
-        </a>
-    {% endfor %}
-</div>
+    {% include 'card_products.html' %}
 
+    {% include 'footer.html' %}
 
-{% endblock %}
+</body>
+<script src="{% static 'js/scripts_base.js' %}"></script>
+</html>
+

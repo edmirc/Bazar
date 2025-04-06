@@ -1,11 +1,6 @@
  /* Estilos básicos para o layout */
- 
- body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
- }
+ @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
  .container-cat{
     width: 100%;
     height: fit-content;
@@ -14,27 +9,24 @@
     margin: 0;
     padding: 0;
     border-bottom: black solid 1px;
+    font-family: 'Oswald', sans-serif;
 }
 .container-cat p {
     width: 100%;
     margin: 0;
     padding: 10px;
     text-align: center;
-    font-family:'Lucida Sans';
+    font-family:'Oswald', sans-serif;
     font-size: 20px;
     font-weight: bold;
     background-color: #d9dee4;
     color:#1a1713
 }
 .elements{
-    width:40%;
-    height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    padding:  10px;
-    margin-left: 30%;
-    text-align: center;
-    align-content: center;
+    justify-content: left;
+    text-align: left;
 }
 .cat{
     padding: 5px;
@@ -44,9 +36,9 @@
     transition: background-color 1s, border-radius 1s;
 }
 .cat:hover{
-    background-color: #16c966;
+    background-color: #9ba39f;
     color: white;
-    border: green solid 1px;
+    border: #7f857f solid 1px;
     border-radius: 8px;
 }
 

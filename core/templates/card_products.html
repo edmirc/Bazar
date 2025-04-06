@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_initi1.css' %}">
+
+
+    <div class="div-body">
+        {% for pro in product %}
+            <a  class="card-a" href="{% url 'detail' pro.pk %}">
+                <div class="card">
+                    {% for img in pro.foto.all %}
+                        {% if img.cover %}
+                            <img src="{{ img.photo.url }}" alt="{{ pro.name }}">
+                        {% endif %}
+                    {% endfor %}
+                    <div class="product-dados">
+                        <h1>{{ pro.name }}</h1>
+                        <h2>{{ pro.condition }}</h2>
+                        <span>R$ {{ pro.price }}</span>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>

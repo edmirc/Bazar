@@ -5,36 +5,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Armário Secreto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles_base1.css' %}">
 </head>
-<link rel="stylesheet" href="{% static 'css\styles_base1.css' %}">
-
-    <!-- Cabeçalho -->
-<header>
-    <h1>Armário Secreto</h1>
-      <!-- Navegação -->
-</header>
-      <nav>
-        <a href="{% url 'bazar' %}">Início</a>
-        <a href="{% url 'category' 1 %}">Categoria</a>
-        <a href="{% url 'contact' %}">Contato</a>
-    </nav>
-    <!-- Campo de Busca -->
-    <div class="search-container">
-        <form action="{% url 'bazar'%}" method="get">
-            <input type="text" id="searchInput" placeholder="Digite o nome do produto..." name="busca">
-            <button onclick="searchProduct()">Buscar</button>
-        </form>
-    </div>
-    
-
-    
-    
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="div-title">
+                <img src="{% static 'imag/logo1.jpg' %}" alt="">
+                <p>Armário Secreto</p>
+            </div>
+            <div class="div-link">
+                <ul class="ul-link">
+                    <li class="li-link"><a href="{% url 'bazar' %}" class="link">Início</a></li>
+                    <li class="li-link"><a href="{% url 'category' 0 %}" class="link">Categorias</a></li>
+                    <li class="li-link"><a href="{% url 'contact' %}" class="link">Contato</a></li>
+                </ul>
+            </div>
+            <div class="div-div-search">
+                <div class="div-search">
+                    <form method="get" action="{% url 'bazar' %}">
+                        <button><img src="{% static 'imag/search.svg' %}" alt=""></button>
+                        <input type="text" placeholder="Pesquisar..." name="busca">
+                    </form>
+                </div>
+            </div>
+            <div class="div-mobile-search">
+                <button onclick="showSearch()"><img class="icon-search" src="{% static 'imag/search.svg' %}" alt=""></button>
+            </div>
+            <div class="div-mobile-icon">
+                <button onclick="menuShow()"><img class="icon" src="{% static 'imag/menu.svg' %}" alt=""></button>
+            </div>
+        </nav>
+        <div class="div-mobile">
+            <ul>
+                <li class="li-link"><a href="{% url 'bazar' %}" class="link">Inicio</a></li>
+                <li class="li-link"><a href="{% url 'category' 0 %}" class="link">Categorias</a></li>
+                <li class="li-link"><a href="{% url 'contact' %}" class="link">Contato</a></li>
+            </ul>
+        </div>
+        <div class="mobile-search">
+            <div class="div-search">
+                <form method="get" action="{% url 'bazar' %}">
+                    <button><img src="{% static 'imag/search.svg' %}" alt=""></button>
+                    <input type="text" placeholder="Pesquisar..." name="busca">
+                </form>
+            </div>
+        </div>
+        
+    </header>
 
     {% block content %}
-    {% endblock %}    
+    {% endblock %}  
 
-<!-- Rodapé -->
-<footer>
-    <p>&copy; 2023 Armário Secreto. Todos os direitos reservados.</p>
-</footer>
+    <footer>
+        <div class="footer-info">
+              <div class="footer-widyh about">
+                  <h2>Sobre</h2>
+                  <p>Armário Secreto: desvende os segredos e encontre tesouros únicos. Um espaço para desapegar e descobrir um novo jeito de consumir, com peças exclusivas e originais.</p>
+                  <div class="social-media">
+                      <ul class="ul-footer">
+                          <li><a class="footer-links" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a class="footer-links" href="https://chat.whatsapp.com/KP2KJWN90dMAJQMgZq09jh"><i class="fab fa-whatsapp"></i></a></li>
+                          <li><a class="footer-links" href="#"><i class="fab fa-instagram"></i></a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="footer-widyh linkk">
+                  <h2>Click Link</h2>
+                  <ul class="ul-footer"></ul>
+                      <li><a class="footer-links" href="{% url 'bazar' %}">Início</a></li>
+                      <li><a class="footer-links" href="{% url 'category' 1 %}">Categorias</a></li>
+                      <li><a class="footer-links" href="{% url 'contact' %}">Contato</a></li>
+                  </ul>
+              </div>
+              <div class="footer-widyh Contact">
+                  <h2>Contatos</h2>
+                  <ul class="ul-footer"></ul>
+                      <li class="contact-li">
+                          <span><i class="fas fa-map-marker-alt"></i></span>
+                          <p>Tangará da Serra - MT</p>
+                      </li>
+                      <li class="contact-li">
+                          <span><i class="far fa-envelope"></i></span>
+                          <a class="footer-links" href="#">armario.secreto01@gmail.com</a>
+                      </li>
+                      <li class="contact-li">
+                          <span><i class="fas fa-phone-volume"></i></span>
+                          <a class="footer-links" href="#">65 0000-0000</a>
+                      </li>
+                  </ul>
+                  
+              </div>
+        </div>
+        <div class="copy-right">
+          <p>&copy; 2025 Armário Secreto. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+
+
+</body>
+
+<script src="{% static 'js/scripts_base.js' %}"></script>
+
 </html>

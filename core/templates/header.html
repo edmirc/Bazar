@@ -1,0 +1,46 @@
+{% load static %}
+<header>
+    <nav class="nav-bar">
+        <div class="div-title">
+            <img src="{% static 'imag/logo1.jpg' %}" alt="">
+            <p>Armário Secreto</p>
+        </div>
+        <div class="div-link">
+            <ul class="ul-link">
+                <li class="li-link"><a href="{% url 'bazar' %}" class="link">Início</a></li>
+                <li class="li-link"><a href="{% url 'category' 0 %}" class="link">Categorias</a></li>
+                <li class="li-link"><a href="{% url 'contact' %}" class="link">Contato</a></li>
+            </ul>
+        </div>
+        <div class="div-div-search">
+            <div class="div-search">
+                <form method="get" action="{% url 'bazar' %}">
+                    <button><img src="{% static 'imag/search.svg' %}" alt=""></button>
+                    <input type="text" placeholder="Pesquisar..." name="busca">
+                </form>
+            </div>
+        </div>
+        <div class="div-mobile-search">
+            <button onclick="showSearch()"><img class="icon-search" src="{% static 'imag/search.svg' %}" alt=""></button>
+        </div>
+        <div class="div-mobile-icon">
+            <button onclick="menuShow()"><img class="icon" src="{% static 'imag/menu.svg' %}" alt=""></button>
+        </div>
+    </nav>
+    <div class="div-mobile">
+        <ul>
+            <li class="li-link"><a href="{% url 'bazar' %}" class="link">Inicio</a></li>
+            <li class="li-link"><a href="{% url 'category' 0 %}" class="link">Categorias</a></li>
+            <li class="li-link"><a href="{% url 'contact' %}" class="link">Contato</a></li>
+        </ul>
+    </div>
+    <div class="mobile-search">
+        <div class="div-search">
+            <form method="get" action="{% url 'bazar' %}">
+                <button><img src="{% static 'imag/search.svg' %}" alt=""></button>
+                <input type="text" placeholder="Pesquisar..." name="busca">
+            </form>
+        </div>
+    </div>
+
+</header>

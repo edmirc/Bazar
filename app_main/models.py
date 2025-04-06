@@ -1,4 +1,11 @@
 from django.db import models
+from core.settings import MEDIA_ROOT
+from os import path, remove
+from PIL import Image
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
+
+
 
 
 class Categories(models.Model):
@@ -90,7 +97,28 @@ class Photo(models.Model):
                     temp.save()
             except:
                 pass
-        return super().save(*args, **kargs)
+        super().save(*args, **kargs)
+        self.decreaseImagen(self.photo.name)
+    
+    def decreaseImagen(self, imagem):
+        imagem = imagem.split('/')
+        imagem = imagem[1]
+        caminho_root = path.join(MEDIA_ROOT, 'products')
+        caminho = path.join(caminho_root, imagem)    
+        with Image.open(caminho) as img:
+            # Calcula as novas dimensões mantendo a proporção
+            largura, altura = img.size
+            proporcao = min(800/largura, 1000/altura)
+            nova_largura = int(largura * proporcao)
+            nova_altura = int(altura * proporcao)
+            # Redimensiona com LANCZOS para melhor qualidade
+            img_redimensionada = img.resize((nova_largura, nova_altura), Image.LANCZOS)
+            
+            # Salva com qualidade ajustável
+            if caminho.lower().endswith('.jpg') or caminho.lower().endswith('.jpeg'):
+                img_redimensionada.save(caminho, quality=85, optimize=True)
+            else:
+                img_redimensionada.save(caminho)
 
     def __str__(self):
         return self.product.name
@@ -114,3 +142,15 @@ class Contact(models.Model):
     def save(self, *args, **kargs):
         self.name = self.name.strip().title()
         super().save(*args, **kargs)
+
+
+@receiver(pre_delete, sender=Product)
+def deletar_imagens_produto(sender, instance, **kwargs):
+    caminho_root = path.join(MEDIA_ROOT, 'products')
+    for imagem in Photo.objects.filter(product=instance):
+        if imagem.photo:
+            nameImagem = str(imagem.photo).split('/')
+            nameImagem = nameImagem[1]
+            caminho_completo = path.join(caminho_root, str(nameImagem))
+            if path.exists(caminho_completo):
+                remove(caminho_completo)
