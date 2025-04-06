@@ -108,20 +108,23 @@ class Photo(models.Model):
         with Image.open(caminho) as img:
             # Calcula as novas dimensões mantendo a proporção
             largura, altura = img.size
-            proporcao = min(800/largura, 1000/altura)
-            nova_largura = int(largura * proporcao)
-            nova_altura = int(altura * proporcao)
-            # Redimensiona com LANCZOS para melhor qualidade
-            img_redimensionada = img.resize((nova_largura, nova_altura), Image.LANCZOS)
-            
-            # Salva com qualidade ajustável
-            if caminho.lower().endswith('.jpg') or caminho.lower().endswith('.jpeg'):
-                img_redimensionada.save(caminho, quality=85, optimize=True)
-            else:
-                img_redimensionada.save(caminho)
-
-    def __str__(self):
-        return self.product.name
+            if largura >= 800 and altura >= 1000:
+                # Redimensiona a imagem se ela for maior que 800x1000
+                proporcao = min(800/largura, 1000/altura)
+                proporcao = min(800/largura, 1000/altura)
+                nova_largura = int(largura * proporcao)
+                nova_altura = int(altura * proporcao)
+                # Redimensiona com LANCZOS para melhor qualidade
+                img_redimensionada = img.resize((nova_largura, nova_altura), Image.LANCZOS)
+                
+                # Salva com qualidade ajustável
+                if caminho.lower().endswith('.jpg') or caminho.lower().endswith('.jpeg'):
+                    img_redimensionada.save(caminho, quality=85, optimize=True)
+                else:
+                    img_redimensionada.save(caminho)
+                    
+        def __str__(self):
+            return self.product.name
     
 
 class Contact(models.Model):

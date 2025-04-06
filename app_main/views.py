@@ -11,13 +11,6 @@ class InitiView(ListView):
     model=Product
     context_object_name='product'
     queryset = Product.objects.prefetch_related(Prefetch('foto', queryset=Photo.objects.all())).filter(sold=False)
-    """
-    def get_context_data(self, **kwargs):
-        context=super().get_context_data(**kwargs)
-        context['product'] = context['product'].filter(sold=False)
-        context['product'] = context['product']
-        #context['image'] = Photo.objects.filter(cover=True, sold=False)
-        return context"""
     
     def get_queryset(self):
         queryset = super().get_queryset()
